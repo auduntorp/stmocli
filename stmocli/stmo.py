@@ -1,9 +1,12 @@
 from redash_client.client import RedashClient
+import os
 import requests
 from requests.compat import urljoin
 
 from .conf import Conf, QueryInfo
 
+RedashClient.BASE_URL = os.environ.get("REDASH_BASE_URL", "https://redash.zedge.io/")
+RedashClient.API_BASE_URL = RedashClient.BASE_URL + "api/"
 
 class STMO(object):
     """The STMO half of stmocli.
